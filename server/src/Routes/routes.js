@@ -2,6 +2,8 @@ const express = require("express")
 
 const { createUsers, loginUser } = require("../Controller/userController")
 const { createAdministrator, administratorLogin } = require("../Controller/administratorController")
+const { createEvents } = require("../Controller/eventController")
+const {bookingTicket} = require("../Controller/ticketbookingController")
 
 const router = express.Router()
 
@@ -15,6 +17,12 @@ router.post('/login', loginUser)
 
 router.post('/registerAdministrator', createAdministrator)
 router.post('/administratorLogin', administratorLogin)
+
+router.post('/events', createEvents)
+
+router.post('/booking', bookingTicket)
+
+
 
 
 router.all("/*", function (req, res) { res.status(404).send({ status: false, msg: "Invalid HTTP request" }) })

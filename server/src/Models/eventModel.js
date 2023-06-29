@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
-
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 const eventSchema = new mongoose.Schema({
 
     administratorId: {
-        type: Object,
+        type: ObjectId,
         ref: "Administrators",
         required: true,
         trim: true,
@@ -12,7 +12,6 @@ const eventSchema = new mongoose.Schema({
     eventName: {
         type: String,
         required: true,
-        trim: true,
     },
     date: {
         type: Date,
@@ -26,7 +25,7 @@ const eventSchema = new mongoose.Schema({
     venue: {
         type: String,
         required: true,
-        trim: true,
+        unique:true,
     },
     ticketAvability: {
         type: Number,
@@ -36,6 +35,6 @@ const eventSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("Events", eventSchema);
