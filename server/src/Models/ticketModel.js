@@ -13,11 +13,9 @@ const ticketSchema = new mongoose.Schema(
         },
         eventName: {
             type: String,
-
         },
-        date: {
+        eventdate: {
             type: Date,
-
         },
         venue: {
             type: String,
@@ -33,6 +31,10 @@ const ticketSchema = new mongoose.Schema(
         },
         remainingTickets: {
             type: Number,
+        },
+        bookingDate: {
+            type: Date,
+            default: Date.now()
         },
         bookingStatus: {
             type: String,

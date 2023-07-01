@@ -9,13 +9,19 @@ let createEvents = async function (req, res) {
 
     try {
         let data = req.body;
-        let { administratorId, eventName, date, time, venue, ticketAvability, ticketPrice } = data
+        let { administratorId, eventName, eventdate, time, venue, ticketAvability, ticketPrice } = data
         if (Object.keys(data).length === 0) return res.status(400).send({ status: false, msg: "Please fill out all the details" })
+        
+        const [day, month, year] = eventdate.split('/').map(Number);
+        const dateObject = new Date(year, month - 1, day);
+        console.log(dateObject)
+        data.eventdate = dateObject
+        
 
         if (!administratorId || administratorId === "") return res.status(400).send({ status: false, msg: "Please fill out the administrator's ID is mandatory." })
         if(!isValidObjectId(administratorId)) return res.status(400).send({status:false, msg:"Please Enter valid administratorId."})
         if (!eventName || eventName === "") return res.status(400).send({ status: false, msg: "Please fill out the eventName is mandatory." })
-        if (!date || date === "") return res.status(400).send({ status: false, msg: "Please fill out the date is mandatory." })
+        if (!eventdate || eventdate === "") return res.status(400).send({ status: false, msg: "Please fill out the eventdate is mandatory." })
         if (!time || time === "") return res.status(400).send({ status: false, msg: "Please fill out the time is mandatory." })
         if (!venue || venue === "") return res.status(400).send({ status: false, msg: "Please fill out the venue is mandatory." })
         if (!ticketAvability || ticketAvability === "") return res.status(400).send({ status: false, msg: "Please fill out the ticketAvability is mandatory." })

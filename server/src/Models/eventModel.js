@@ -13,9 +13,10 @@ const eventSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    date: {
+    eventdate: {
         type: Date,
         required: true,
+        default: Date.now
     },
     time: {
         type: String,
@@ -25,7 +26,7 @@ const eventSchema = new mongoose.Schema({
     venue: {
         type: String,
         required: true,
-        unique:true,
+        unique: true,
     },
     ticketAvability: {
         type: Number,
