@@ -13,24 +13,19 @@ const ticketSchema = new mongoose.Schema(
         },
         eventName: {
             type: String,
-        },
-        eventdate: {
-            type: Date,
+            require:true
         },
         venue: {
             type: String,
+            require:true
         },
         bookingId: {
             type: String,
-            required: true,
             default: uuidv4,
         },
         NoOfTickets: {
             type: Number,
             default: 1,
-        },
-        remainingTickets: {
-            type: Number,
         },
         bookingDate: {
             type: Date,

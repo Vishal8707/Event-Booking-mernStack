@@ -99,10 +99,7 @@ let updateEmail = async function (req, res) {
     if (!getUserId) return res.status(404).send({ status: false, message: "User Id not found." });
     let data = req.body;
     let { userName, emailId, password } = data
-
-
     if (Object.keys(data).length === 0) return res.status(400).send({ status: false, msg: "Please fill all the details" });
-
     if (!userName) return res.status(400).send({ status: false, msg: "Please provide a userName" });
     if (!emailId || emailId == "") return res.status(400).send({ status: false, msg: "emailId is mandatory" });
     if (!password || password == "") return res.status(400).send({ status: false, msg: "password is mandatory" });

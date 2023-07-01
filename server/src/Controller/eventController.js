@@ -12,12 +12,6 @@ let createEvents = async function (req, res) {
         let { administratorId, eventName, eventdate, time, venue, ticketAvability, ticketPrice } = data
         if (Object.keys(data).length === 0) return res.status(400).send({ status: false, msg: "Please fill out all the details" })
         
-        const [day, month, year] = eventdate.split('/').map(Number);
-        const dateObject = new Date(year, month - 1, day);
-        console.log(dateObject)
-        data.eventdate = dateObject
-        
-
         if (!administratorId || administratorId === "") return res.status(400).send({ status: false, msg: "Please fill out the administrator's ID is mandatory." })
         if(!isValidObjectId(administratorId)) return res.status(400).send({status:false, msg:"Please Enter valid administratorId."})
         if (!eventName || eventName === "") return res.status(400).send({ status: false, msg: "Please fill out the eventName is mandatory." })
