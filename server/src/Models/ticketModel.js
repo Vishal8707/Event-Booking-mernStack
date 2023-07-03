@@ -13,11 +13,11 @@ const ticketSchema = new mongoose.Schema(
         },
         eventName: {
             type: String,
-            require:true
+            require: true
         },
         venue: {
             type: String,
-            require:true
+            require: true
         },
         bookingId: {
             type: String,
@@ -33,9 +33,12 @@ const ticketSchema = new mongoose.Schema(
         },
         bookingStatus: {
             type: String,
-            enum: ["Pending", "Confirmed", "Cancelled"],
-            require: true
+            default: "Pending"
+        },
+        isDeleted: {
+            type: Boolean,
+            default: false
         },
     }, { timestamps: true });
 
-module.exports = mongoose.model("Tickets", ticketSchema);
+module.exports = mongoose.model("Ticketbooking", ticketSchema);

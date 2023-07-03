@@ -18,7 +18,7 @@ const bookingHistorySchema = new mongoose.Schema (
         } , 
         ticketId : {
             type : ObjectId ,
-            ref : "Tickets" ,
+            ref : "Ticketbooking" ,
             required : true ,
             trim : true
         }

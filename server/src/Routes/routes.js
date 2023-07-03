@@ -3,7 +3,8 @@ const express = require("express")
 const { createUsers, loginUser } = require("../Controller/userController")
 const { createAdministrator, administratorLogin } = require("../Controller/administratorController")
 const { createEvents } = require("../Controller/eventController")
-const {bookingTicket} = require("../Controller/ticketbookingController")
+const { bookingTicket } = require("../Controller/ticketbookingController")
+const { cancelTicket } = require("../Controller/ticketcancellationController")
 
 const router = express.Router()
 
@@ -21,6 +22,9 @@ router.post('/administratorLogin', administratorLogin)
 router.post('/events', createEvents)
 
 router.post('/booking', bookingTicket)
+
+router.post('/cancel', cancelTicket)
+
 
 
 
