@@ -11,6 +11,19 @@ const ticketSchema = new mongoose.Schema(
             required: true,
             trim: true,
         },
+        title: {
+            type: String,
+            default:""
+        },
+        userName: {
+            type: String,
+            default:""
+        },
+        emailId: {
+            type: String,
+            default:""
+            
+        },
         eventName: {
             type: String,
             require: true
@@ -26,6 +39,10 @@ const ticketSchema = new mongoose.Schema(
         NoOfTickets: {
             type: Number,
             default: 1,
+        },
+        eventdate:{
+            type:Date,
+            default:""
         },
         bookingDate: {
             type: Date,

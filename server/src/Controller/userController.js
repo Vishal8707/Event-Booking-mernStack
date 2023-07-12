@@ -103,9 +103,6 @@ let updateEmail = async function (req, res) {
     if (!userName) return res.status(400).send({ status: false, msg: "Please provide a userName" });
     if (!emailId || emailId == "") return res.status(400).send({ status: false, msg: "emailId is mandatory" });
     if (!password || password == "") return res.status(400).send({ status: false, msg: "password is mandatory" });
-
-
-
   }
   catch (err) {
     res.status(500).send({ status: false, msg: err.msg })

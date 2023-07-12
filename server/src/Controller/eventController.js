@@ -11,9 +11,9 @@ let createEvents = async function (req, res) {
         let data = req.body;
         let { administratorId, eventName, eventdate, time, venue, ticketAvability, ticketPrice } = data
         if (Object.keys(data).length === 0) return res.status(400).send({ status: false, msg: "Please fill out all the details" })
-        
+
         if (!administratorId || administratorId === "") return res.status(400).send({ status: false, msg: "Please fill out the administrator's ID is mandatory." })
-        if(!isValidObjectId(administratorId)) return res.status(400).send({status:false, msg:"Please Enter valid administratorId."})
+        if (!isValidObjectId(administratorId)) return res.status(400).send({ status: false, msg: "Please Enter valid administratorId." })
         if (!eventName || eventName === "") return res.status(400).send({ status: false, msg: "Please fill out the eventName is mandatory." })
         if (!eventdate || eventdate === "") return res.status(400).send({ status: false, msg: "Please fill out the eventdate is mandatory." })
         if (!time || time === "") return res.status(400).send({ status: false, msg: "Please fill out the time is mandatory." })
@@ -29,6 +29,7 @@ let createEvents = async function (req, res) {
         if (!validatePrice(ticketPrice)) return res.status(400).send({ status: false, msg: "Please fill in the valid ticketPrice." })
         if (!validateName(venue)) return res.status(400).send({ status: false, msg: "Please fill in the valid venue." })
 
+        data.remainingTickets = data.ticketAvability
         let saveEvents = await eventModel.create(data)
         return res.status(400).send({ status: true, msg: "Event successfully Created", data: saveEvents })
 
